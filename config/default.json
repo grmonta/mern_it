@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://Gmonta:Gmonta123@devconnector-w1dnv.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "secretToken314"
+  "jwtSecret": "secretToken314",
+  "githubClientId": "158da9812a88a5573281",
+  "githubSecret": "e474f157281714fc19fae098fe0ff226de47ae46"
 }
