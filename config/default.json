@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://Gmonta:Gmonta123@devconnector-w1dnv.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://Gmonta:Gmonta123@devconnector-w1dnv.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secretToken314"
 }

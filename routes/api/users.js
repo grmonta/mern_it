@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator/check');
+
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
 
 // @route   POST api/users
@@ -68,9 +71,30 @@ router.post(
 
       await user.save();
 
-      //return the jsonwebtoken so user get logins on front end right away
+      //return the jsonwebtoken so user get logins on front end right away definte user payload
+      //you can now access the user data, like id
 
-      res.send('User Registered');
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      //  jwt.sign takes a payload and a secret, saved in config and after token can put an option
+      //set of options, exprires in 3600 in production
+      // but for testing put it in 360000, then it takes
+      // a callback function which takes err, token as an argument
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
+
+      // res.send('User Registered');
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
