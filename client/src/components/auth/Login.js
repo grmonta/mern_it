@@ -6,7 +6,7 @@ const Login = () => {
     password: ''
   });
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
 
   //by changing the key to be in brackets you can know use it on
   // every input below
